@@ -35,7 +35,6 @@ public class PaymentTermController {
 	}
 	
 	@DeleteMapping(path="/{code}")
-	@Transactional
 	public ResponseEntity<String> deletePaymentTerm(@PathVariable(name="code") String code){
 		paymentTermSrvc.deletePaymentTerm(code);
 		return ResponseEntity.ok("delete success");

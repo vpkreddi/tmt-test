@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.app.core.domain.PaymentTerm;
 import com.payment.domain.repo.PaymentTermRepository;
@@ -17,6 +18,7 @@ import com.payment.domain.repo.PaymentTermRepository;
 @ComponentScan(basePackages = "com.payment")
 @EntityScan(basePackages = "com.app.core.domain")
 @EnableJpaRepositories(basePackages = "com.payment.domain.repo")
+@EnableTransactionManagement
 public class PaymentTermApplication implements CommandLineRunner {
 	
 	@Autowired

@@ -1,29 +1,26 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+software list:
 
-### What is this repository for? ###
+mysql 5.7
+java 8.0
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+STEPS to execute :
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+1.Run scripts/db.sql  to create tables payment_term and invoice
 
-### Contribution guidelines ###
+2.navigate to app_core folder and "mvn install" to package and install in local .m2 repository
 
-* Writing tests
-* Code review
-* Other guidelines
+3.navigate to payment_term folder and "mvn package" to generate jar in target
 
-### Who do I talk to? ###
+4.navigate to target folder and start payment-term-service using "java -jar payment-term-0.0.1-SNAPSHOT.jar"
 
-* Repo owner or admin
-* Other community or team contact
+5.navigate to invoice folder and "mvn package" to generate jar in target
+
+6.navigate to target folder andstart invoice-service using "java -jar invoice-app-0.0.1-SNAPSHOT.jar"
+
+
+Additional Info:
+
+payterm-term-service url's can be accessed at "localhost:8090/api/v1/swagger-ui.html"

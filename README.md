@@ -23,4 +23,6 @@ STEPS to execute :
 
 Additional Info:
 
+Scheduler runs every morning 5.00 am to send reminders to valid unpaid invoices
+
 payterm-term-service url's can be accessed at "localhost:8090/api/v1/swagger-ui.html"

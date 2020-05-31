@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `tmt` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `tmt`;
+CREATE DATABASE  IF NOT EXISTS `TMT` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `TMT`;
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tmt

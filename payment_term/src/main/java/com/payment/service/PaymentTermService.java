@@ -1,5 +1,7 @@
 package com.payment.service;
 
+import java.util.Optional;
+
 import com.app.core.domain.PaymentTerm;
 
 public interface PaymentTermService {
@@ -7,6 +9,6 @@ public interface PaymentTermService {
 	PaymentTerm createPaymentTerm(PaymentTerm pt) ;
 	Long deletePaymentTerm(String code);
 	PaymentTerm updatePaymentTerm(PaymentTerm pt);
-	PaymentTerm getPaymentTerm(String code);
+	Optional<PaymentTerm> getPaymentTerm(String code);
 
 }

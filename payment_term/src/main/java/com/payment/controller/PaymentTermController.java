@@ -1,6 +1,7 @@
 package com.payment.controller;
 
 import java.sql.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,9 @@ public class PaymentTermController {
 	
 	@GetMapping(path = "/{code}")
 	public ResponseEntity<PaymentTerm> getPaymentTerm(@PathVariable(name = "code") String code) {
-		PaymentTerm pt = paymentTermSrvc.getPaymentTerm(code);
-		if(pt!=null) {
-			return ResponseEntity.ok(pt);
+		Optional<PaymentTerm> pt = paymentTermSrvc.getPaymentTerm(code);
+		if(pt.isPresent()) {
+			return ResponseEntity.ok(pt.get());
 		}else {
 			return ResponseEntity.notFound().build();
 		}
@@ -57,14 +58,15 @@ public class PaymentTermController {
 	
 	@PutMapping(path="/{code}")
 	public ResponseEntity<PaymentTerm> updatePaymentTerm(@PathVariable(name="code") String code, @RequestBody PaymentTerm pt){
-		PaymentTerm ptObj = paymentTermSrvc.getPaymentTerm(code);
-		if(ptObj!=null) {
-		ptObj.setCreationDate(pt.getCreationDate());
-		ptObj.setDays(pt.getDays());
-		ptObj.setDescription(pt.getDescription());
-		ptObj.setReminderBeforeDays(pt.getReminderBeforeDays());
-		ptObj = paymentTermSrvc.updatePaymentTerm(ptObj);
-		return ResponseEntity.ok(ptObj);
+		Optional<PaymentTerm> ptObj = paymentTermSrvc.getPaymentTerm(code);
+		if(ptObj.isPresent()) {
+		ptObj.get();
+		ptObj.get().setCreationDate(pt.getCreationDate());
+		ptObj.get().setDays(pt.getDays());
+		ptObj.get().setDescription(pt.getDescription());
+		ptObj.get().setReminderBeforeDays(pt.getReminderBeforeDays());
+		PaymentTerm pterm = paymentTermSrvc.updatePaymentTerm(ptObj.get());
+		return ResponseEntity.ok(pterm);
 		}else {
 			return ResponseEntity.notFound().build();
 		}

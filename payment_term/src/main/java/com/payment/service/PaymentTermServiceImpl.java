@@ -1,5 +1,7 @@
 package com.payment.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +37,7 @@ public class PaymentTermServiceImpl implements PaymentTermService {
 	}
 
 	@Override
-	public PaymentTerm getPaymentTerm(String code) {
+	public Optional<PaymentTerm> getPaymentTerm(String code) {
 		// TODO Auto-generated method stub
 		return paymentTermRepo.findByCode(code);
 	}

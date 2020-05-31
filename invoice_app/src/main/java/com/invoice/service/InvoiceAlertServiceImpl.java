@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import com.app.core.domain.STATUS;
 import com.invoice.domain.repo.InvoiceRepository;
 
 @Service
+@EnableAsync
 public class InvoiceAlertServiceImpl implements InvoiceAlertService {
 
 	private Logger logger = LoggerFactory.getLogger(InvoiceAlertServiceImpl.class);
@@ -24,6 +27,7 @@ public class InvoiceAlertServiceImpl implements InvoiceAlertService {
 
 	@Override
 	@Scheduled(cron = "${invoice.alert.cron}")
+	@Async("threadPoolTaskExecutor")
 	public void generateReminderForUnpaidInvoices() {
 		List<Invoice> unpaidInvoicesList = invoiceRepo.findByStatus(STATUS.UNPAID);
 		List<Invoice> unpaidValidInvoiceForReminders = unpaidInvoicesList.stream().filter((inv) -> {

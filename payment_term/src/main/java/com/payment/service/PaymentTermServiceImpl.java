@@ -10,27 +10,26 @@ import com.app.core.domain.PaymentTerm;
 import com.payment.domain.repo.PaymentTermRepository;
 
 @Service
+@Transactional
 public class PaymentTermServiceImpl implements PaymentTermService {
 	
 	@Autowired
 	PaymentTermRepository paymentTermRepo;
 	
 	@Override
-	@Transactional
+	
 	public PaymentTerm createPaymentTerm(PaymentTerm pt) {
 		// TODO Auto-generated method stub
 		return paymentTermRepo.save(pt);
 	}
 
 	@Override
-	@Transactional
-	public Long deletePaymentTerm(String code) {
+	public boolean deletePaymentTerm(String code) {
 		// TODO Auto-generated method stub
-		return paymentTermRepo.deleteByCode(code);
+		return paymentTermRepo.deleteByCode(code)>0 ? true: false;
 	}
 
 	@Override
-	@Transactional
 	public PaymentTerm updatePaymentTerm(PaymentTerm pt) {
 		// TODO Auto-generated method stub
 		return paymentTermRepo.save(pt);

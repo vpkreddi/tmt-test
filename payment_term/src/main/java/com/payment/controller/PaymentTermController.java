@@ -37,8 +37,8 @@ public class PaymentTermController {
 	
 	@DeleteMapping(path="/{code}")
 	public ResponseEntity<String> deletePaymentTerm(@PathVariable(name="code") String code){
-		paymentTermSrvc.deletePaymentTerm(code);
-		return ResponseEntity.ok("delete success");
+		boolean delRes = paymentTermSrvc.deletePaymentTerm(code);
+		return delRes? ResponseEntity.ok("delete success"):ResponseEntity.noContent().build();
 	}
 	
 	

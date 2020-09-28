@@ -1,0 +1,22 @@
+version: '3'
+services:
+  
+    db-service:
+        image: mysql-db
+        ports: 
+            - 3306:3306
+        networks: [sample]
+    payment-service:
+        image: payment-app
+        depends_on: [db-service]
+        ports:
+            - 8090:8090
+        networks: [sample]
+    invoice-service:
+        image: invoice-app
+        depends_on: [db-service,payment-service]
+        ports:
+            - 8080:8080
+        networks: [sample]
+networks:
+    sample:

@@ -65,3 +65,6 @@ CREATE TABLE `payment_term` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-30 12:33:47
+
+
+GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'root123';

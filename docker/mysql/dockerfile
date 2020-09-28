@@ -1,0 +1,8 @@
+FROM mysql:5.7.24
+
+ENV MYSQL_ROOT_PASSWORD=root123
+
+COPY scripts/db.sql /docker-entrypoint-initdb.d/
+
+COPY mysqld.cnf /etc/mysql/mysql.conf.d/
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh", "mysqld"]
